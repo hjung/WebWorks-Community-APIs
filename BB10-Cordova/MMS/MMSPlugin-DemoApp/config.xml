@@ -4,22 +4,22 @@
     <description>
         A sample Apache Cordova application that sends an SMS for BlackBerry 10.
     </description>
-    <author email="shiksingh@blackberry.com" href="http://www.blackberry.com">
-        Shikhir Singh - code.shikhir.com
+    <author email="hjung@blackberry.com" href="https://www.github.com/hjung">
+        HyunJun Jung - https://www.github.com/hjung
     </author>
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
     <content src="index.html" />
-	<icon src="icons/icon-150.png" />
-	<icon src="icons/icon-114.png" />
-	<icon src="icons/icon-86.png" />
+	<icon src="icons/mms-icon-150x150.png" />
+	<icon src="icons/mms-icon-114x114.png" />
+	<icon src="icons/mms-icon-86x86.png" />
 	<rim:permissions>
 	    <rim:permit>access_pimdomain_messages</rim:permit>
 	    <rim:permit>access_sms_mms</rim:permit>
 	    <rim:permit>access_phone</rim:permit>
 	    <rim:permit>access_shared</rim:permit>
 	</rim:permissions>
-	<rim:splash src="sms-splashscreen-1280x768.png"/>
-	<rim:splash src="sms-splashscreen-720x720.png"/>		
+	<rim:splash src="mms-splashscreen-1280x768.png"/>
+	<rim:splash src="mms-splashscreen-720x720.png"/>		
 </widget>
