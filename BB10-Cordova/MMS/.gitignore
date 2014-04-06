@@ -1,0 +1,8 @@
+hooks/
+merges/
+platforms/
+plugins/
+.cordova/
+.project
+.DS_Store
+
