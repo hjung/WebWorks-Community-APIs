@@ -43,14 +43,14 @@
       <p class="welcome">This BlackBerry 10 Cordova Plugin is a designed to allow an app to send a user directed MMS. Enter the following to test:</p>
     </div>
 
-	<form>
+	
 	  <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber">
 	  <img src="./icons/mms.png" onclick="app.openFilePicker();" />
-	  <div id="MMSThumbnail"></div>
+	  <div id="MMSThumbnail"> </div>
 	  <textarea rows="5" maxlength="140" placeholder="Your Message" id="textMsg" name="textMsg"> </textarea>
 	   
 	  <a class="button button-block" onclick="app.sendSMS();" href="#resultsModal">Send</a>
-	</form>
+	
 	
 	<div id="resultsModal" class="modal">
 	  <header class="bar-title">
