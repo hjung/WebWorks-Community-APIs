@@ -20,7 +20,7 @@ var bbMMS = {
 	// usage --> bbSMS.send("2123332222", "What's up doc?", "Elmer Fudd");
 	send: function(callback, phoneNumber, textMsg, personName, mmsAttachmentFilePath, subject){
 		console.log('trying to send an sms');
-		if(personName===undefined){
+		if(personName===undefined || personName===""){
 			personName=phoneNumber;
 		}
 
