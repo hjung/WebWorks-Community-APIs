@@ -44,13 +44,18 @@
     </div>
 
 	
-	  <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber">
-	  <img src="./icons/mms.png" onclick="app.openFilePicker();" />
-	  <div id="MMSThumbnail"> </div>
+	  <div class="block1">
+	      <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" />
+	  </div>
+	  <div class="block2"> <img src="./icons/paperclip.png" onclick="app.openFilePicker();" />
+	  </div>
+	  
+	  <div class="block3"><div id="MMSThumbnail"> </div>
+	  <input type="text" maxlength="50" placeholder="Subject" id="subject" name="subject" />
 	  <textarea rows="5" maxlength="140" placeholder="Your Message" id="textMsg" name="textMsg"> </textarea>
 	   
 	  <a class="button button-block" onclick="app.sendSMS();" href="#resultsModal">Send</a>
-	
+	</div>
 	
 	<div id="resultsModal" class="modal">
 	  <header class="bar-title">

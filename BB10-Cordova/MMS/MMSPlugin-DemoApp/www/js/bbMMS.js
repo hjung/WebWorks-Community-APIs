@@ -18,7 +18,7 @@
 var bbMMS = {
 
 	// usage --> bbSMS.send("2123332222", "What's up doc?", "Elmer Fudd");
-	send: function(callback, phoneNumber, textMsg, personName, mmsAttachmentFilePath){
+	send: function(callback, phoneNumber, textMsg, personName, mmsAttachmentFilePath, subject){
 		console.log('trying to send an sms');
 		if(personName===undefined){
 			personName=phoneNumber;
@@ -29,7 +29,8 @@ var bbMMS = {
 				"destination": phoneNumber,  
 				"message": textMsg,
 				"personName": personName, // can be any string such as "Barack Obama"
-				"mmsAttachmentFilePath": mmsAttachmentFilePath 
+				"mmsAttachmentFilePath": mmsAttachmentFilePath,
+				"subject": subject 
 			};
 			console.log(param);
 			var output = community.SMSPlugin.udSMS_Sync(param); // <------- this is the call to C++ implementation. That's all!
@@ -40,9 +41,9 @@ var bbMMS = {
 		}
 
 	},
-	sendAsync: function(callback, phoneNumber, textMsg, personName, mmsAttachmentFilePath){
+	sendAsync: function(callback, phoneNumber, textMsg, personName, mmsAttachmentFilePath, subject){
 		console.log('trying to send an mms');
-		if(personName===undefined){
+		if(personName===undefined || personName===""){
 			personName=phoneNumber;
 		}
 
@@ -51,7 +52,8 @@ var bbMMS = {
 				"destination": phoneNumber,  
 				"message": textMsg,
 				"personName": personName, // can be any string such as "Barack Obama"
-				"mmsAttachmentFilePath": mmsAttachmentFilePath  
+				"mmsAttachmentFilePath": mmsAttachmentFilePath,
+				"subject": subject  
 			};
 			console.log(param);
 			

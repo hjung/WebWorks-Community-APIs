@@ -43,9 +43,10 @@ var app = {
 		app.removeResults();
 		var phoneNumber = document.getElementById('phoneNumber').value;
 		var textMsg = document.getElementById('textMsg').value;
+		var subject = document.getElementById('subject').value;
 		var mmsAttachmentFilePath = document.getElementById('MMSAttachment').getAttribute('data-logical-path');
 		console.log('This is the MMSAttachmentPath for C++ ' + mmsAttachmentFilePath);
-		var personName = "BOB";	
+		var personName = "";	
 		if(phoneNumber.length<3 || textMsg.length==0){
 			document.getElementById("results").innerHTML="Error: Both the Phone Number and the Text Message needs to be entered";
 			return;
@@ -56,7 +57,7 @@ var app = {
 		console.log("Message:"+textMsg);
 
 		
-		bbMMS.sendAsync(app.smsCallback, phoneNumber, textMsg, personName, mmsAttachmentFilePath); // <----- THIS Calls bbSMS.js file. Include bbSMS.js in your project. 
+		bbMMS.sendAsync(app.smsCallback, phoneNumber, textMsg, personName, mmsAttachmentFilePath, subject); // <----- THIS Calls bbSMS.js file. Include bbSMS.js in your project. 
 		
 	},
 	smsCallback: function(output){
@@ -74,7 +75,8 @@ var app = {
 																+"<br><b>Recipient Address:</b> "+result.recipientAddress
 																+"<br><b>Conversation ID:</b> "+result.conversationId				
 																+"<br><b>Message ID:</b> "+result.messageId
-																+"<br><b>Message:</b> "+result.message;
+																+"<br><b>Message:</b> "+result.message
+																+"<br><b>Message:</b> "+result.subject;
 	},
 	removeResults: function(){
 		document.getElementById("results").innerHTML="Attempting to Send...";

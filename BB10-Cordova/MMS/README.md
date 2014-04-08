@@ -36,6 +36,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 	    <rim:permit>access_pimdomain_messages</rim:permit>
 	    <rim:permit>access_sms_mms</rim:permit>
 	    <rim:permit>access_phone</rim:permit>
+	    <rim:permit>access_shared</rim:permit>
 	</rim:permissions>
 ```
 

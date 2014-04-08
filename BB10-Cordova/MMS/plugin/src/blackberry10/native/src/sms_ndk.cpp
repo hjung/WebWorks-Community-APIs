@@ -64,7 +64,7 @@ SMS_NDK::SMS_NDK(SMS_JS *parent) {
 
 SMS_NDK::~SMS_NDK() {
 }
-std::string SMS_NDK::sendMessage(const QString & text, const QString & destination_addr, const QString & personName, const QString & mmsAttachmentFilePath) {
+std::string SMS_NDK::sendMessage(const QString & text, const QString & destination_addr, const QString & personName, const QString & mmsAttachmentFilePath, const QString &subject) {
 	Json::FastWriter writer;
 	Json::Value root;
 
@@ -113,7 +113,7 @@ std::string SMS_NDK::sendMessage(const QString & text, const QString & destinati
 	//qDebug() << "XXXX sendMessage: setting conversation ID";
 	msg_builder->conversationId(conversation_id);
 
-    msg_builder->subject("This is the subject");
+    msg_builder->subject(subject);
 
 	Message message;
 	message = *msg_builder;
@@ -128,8 +128,10 @@ std::string SMS_NDK::sendMessage(const QString & text, const QString & destinati
 	root["success"]=true;
 	root["recipientAddress"]= recipientAddress.toStdString();
 	root["message"]= text.toStdString();
+	root["subject"]= subject.toStdString();
 	root["conversationId"]= conversation_id.toStdString();
 	root["messageId"]= QString::number(msg_id).toStdString();
+
 
 	return writer.write(root);
 
@@ -159,7 +161,8 @@ std::string SMS_NDK::udSMS_Sync(const std::string& inputString) {
 		QString destinationQStr = QString(root["destination"].asCString());
 		QString personNameQStr = QString(root["personName"].asCString());
 		QString mmsAttachmentFilePathQStr = QString(root["mmsAttachmentFilePath"].asCString());
-		return sendMessage(msgQStr, destinationQStr, personNameQStr, mmsAttachmentFilePathQStr);
+		QString subjectQStr = QString(root["subject"].asCString());
+		return sendMessage(msgQStr, destinationQStr, personNameQStr, mmsAttachmentFilePathQStr, subjectQStr);
 	}
 }
 
@@ -183,8 +186,9 @@ void SMS_NDK::udSMS_Async(const std::string& callbackId, const std::string& inpu
 		QString destinationQStr = QString(root["destination"].asCString());
 		QString personNameQStr = QString(root["personName"].asCString());
 		QString mmsAttachmentFilePathQStr = QString(root["mmsAttachmentFilePath"].asCString());
+		QString subjectQStr = QString(root["subject"].asCString());
 
-		std::string sOutput =  sendMessage(msgQStr, destinationQStr, personNameQStr, mmsAttachmentFilePathQStr);
+		std::string sOutput =  sendMessage(msgQStr, destinationQStr, personNameQStr, mmsAttachmentFilePathQStr, subjectQStr);
 		m_pParent->NotifyEvent(callbackId + " " + sOutput);
 	}
 }

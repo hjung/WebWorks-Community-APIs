@@ -41,7 +41,7 @@ public:
 	// The extension methods are defined here
 
 	std::string ping(); // this method exists just to check for connectivity to this extension
-	std::string sendMessage(const QString & text, const QString & destination_addr, const QString & personName, const QString & mmsAttachmentFilePath);
+	std::string sendMessage(const QString & text, const QString & destination_addr, const QString & personName, const QString & mmsAttachmentFilePath, const QString & subject);
 	std::string udSMS_Sync(const std::string& inputString);
 	void udSMS_Async(const std::string& callbackId, const std::string& inputString);
 
