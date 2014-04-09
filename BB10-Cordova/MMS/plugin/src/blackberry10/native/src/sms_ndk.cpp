@@ -102,21 +102,21 @@ std::string SMS_NDK::sendMessage(const QString & text, const QString & destinati
 
 
 	    msg_builder->addAttachment(Attachment("text/plain", "", text));
-
 	    QUrl file_qurl = QUrl::fromLocalFile(mmsAttachmentFilePath);
 	    msg_builder->addAttachment(Attachment("image/jpeg", "photo.jpg", file_qurl ));
-
-
-
-	msg_builder->addRecipient(recipient);
+	    msg_builder->subject(subject);
+	    msg_builder->addRecipient(recipient);
 
 	//qDebug() << "XXXX sendMessage: setting conversation ID";
 	msg_builder->conversationId(conversation_id);
 
-    msg_builder->subject(subject);
+
 
 	Message message;
 	message = *msg_builder;
+
+
+
 
 // Send it using the SMS MMS account
 	//qDebug() << "XXXX sendMessage: sending via account id " << _sms_account_id << " : " << message.recipientAt(0).address();
