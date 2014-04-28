@@ -123,7 +123,7 @@ std::string SMS_NDK::sendMessage(const QString & text, const QString & destinati
 	QString recipientAddress = QString(message.recipientAt(0).address());
 
 	MessageKey msg_id = _message_service->send(_sms_account_id, message);
-
+	_message_service->setStatus(_sms_account_id, conversation_id, ConversationStatus::Finalized);
 	root["smsAccountID"] = _sms_account_id;
 	root["success"]=true;
 	root["recipientAddress"]= recipientAddress.toStdString();
